@@ -1,8 +1,12 @@
+// importing needed libraries
 import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+
+// importing routes files
+import ProductRoutes from "./routes/product.routes.js";
 
 dotenv.config();
 
@@ -19,6 +23,7 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.get("/", (req, res) => {
   res.send("Hello!");
 });
+app.use("/products", ProductRoutes);
 
 // database connection
 mongoose
