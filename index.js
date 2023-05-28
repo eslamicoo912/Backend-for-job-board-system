@@ -6,7 +6,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 
 // importing routes files
-import ProductRoutes from "./routes/product.routes.js";
+import UserRoutes from "./routes/user.routes.js";
 
 dotenv.config();
 
@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.get("/", (req, res) => {
   res.send("Hello!");
 });
-app.use("/products", ProductRoutes);
+app.use("/api/users", UserRoutes);
 
 // database connection
 mongoose
