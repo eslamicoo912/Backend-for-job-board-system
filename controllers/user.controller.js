@@ -1,5 +1,13 @@
 import UserModel from "../models/user.model.js";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+
+dotenv.config();
+
+const generateToken = (id) => {
+  return jwt.sign({ id }, process.env.SECRET_KEY);
+};
 
 export const createUser = async (req, res) => {
   const { username, password } = req.body;
@@ -28,6 +36,45 @@ export const createUser = async (req, res) => {
           data: user,
         });
       }
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const loginUser = async (req, res) => {
+  const { username, password } = req.body;
+  try {
+    // check if the user is not found in the database
+    const user = await UserModel.findOne({ username: username });
+    if (!user) {
+      return res.status(401).json({
+        status: "failed",
+        message: "User not found. Please sign up first.",
+      });
+    }
+
+    // the user is found, compare the password and login
+    bcrypt.compare(password, user.password, (err, match) => {
+      // check if the entered password matching the password in the database
+      if (!match) {
+        return res.status(401).json({
+          status: "failed",
+          message: "Incorrect password. Please try again.",
+        });
+      }
+
+      if (err) {
+        console.log(err);
+        return;
+      }
+
+      return res.status(200).json({
+        status: "success",
+        id: user._id,
+        username: user.username,
+        token: generateToken(user._id),
+      });
     });
   } catch (error) {
     console.log(error);
