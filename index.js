@@ -8,6 +8,7 @@ import dotenv from "dotenv";
 // importing routes files
 import UserRoutes from "./routes/user.routes.js";
 import JobSeekerRoutes from "./routes/jobseeker.routes.js";
+import EducationRoutes from "./routes/education.routes.js";
 
 dotenv.config();
 
@@ -26,6 +27,7 @@ app.get("/", (req, res) => {
 });
 app.use("/api/users", UserRoutes);
 app.use("/api/jobseekers", JobSeekerRoutes);
+app.use("/api/educations", EducationRoutes);
 
 // database connection
 mongoose
