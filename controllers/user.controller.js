@@ -80,3 +80,12 @@ export const loginUser = async (req, res) => {
     console.log(error);
   }
 };
+
+export const getAllUsers = async (req, res) => {
+  try {
+    const users = await UserModel.find();
+    res.json(users);
+  } catch (error) {
+    console.log(erorr);
+  }
+};
