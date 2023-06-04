@@ -7,8 +7,7 @@ const JobSeeker = mongoose.Schema({
   },
   img: {
     type: String,
-    default:
-      "https://as1.ftcdn.net/v2/jpg/02/53/27/72/1000_F_253277232_w0KhD626du0CeTExyY9HV5wANXHRjswV.jpg",
+    default: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
   },
   fullname: {
     type: String,
