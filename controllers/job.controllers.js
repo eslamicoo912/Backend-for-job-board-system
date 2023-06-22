@@ -33,12 +33,13 @@ export const getSingleJob = async (req, res) => {
 };
 
 export const getSearchedJobs = async (req, res) => {
-  const { industry, location, level } = req.query;
+  const { industry, location, level, type } = req.query;
   try {
     const jobs = await JobModel.find({
       industry: industry,
       location: location,
       experience_level: level,
+      employ_type: type,
     });
     res.json(jobs);
   } catch (error) {

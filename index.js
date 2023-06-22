@@ -12,6 +12,7 @@ import EducationRoutes from "./routes/education.routes.js";
 import ExperienceRoutes from "./routes/experience.routes.js";
 import SkillRoutes from "./routes/skill.routes.js";
 import JobRoutes from "./routes/job.routes.js";
+import ApplicationRoutes from "./routes/application.routes.js";
 
 dotenv.config();
 
@@ -34,6 +35,7 @@ app.use("/api/educations", EducationRoutes);
 app.use("/api/experiences", ExperienceRoutes);
 app.use("/api/skills", SkillRoutes);
 app.use("/api/jobs", JobRoutes);
+app.use("/api/applications", ApplicationRoutes);
 
 // database connection
 mongoose
