@@ -19,6 +19,13 @@ const Job = mongoose.Schema({
     type: String,
     required: true,
   },
+  date: {
+    type: Date,
+    default: new Date().getTime(),
+  },
+  benefits: {
+    type: String,
+  },
   description: {
     type: String,
     required: true,

@@ -86,6 +86,16 @@ export const getAllUsers = async (req, res) => {
     const users = await UserModel.find();
     res.json(users);
   } catch (error) {
-    console.log(erorr);
+    console.log(error);
+  }
+};
+
+export const getUserById = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const user = await UserModel.findById(id);
+    res.json(user);
+  } catch (error) {
+    console.log(error);
   }
 };
