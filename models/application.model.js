@@ -13,6 +13,9 @@ const Application = mongoose.Schema({
     type: String,
     required: true,
   },
+  coverletter: {
+    type: String,
+  },
   status: {
     type: String,
     default: "Pending",

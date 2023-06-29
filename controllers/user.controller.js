@@ -1,4 +1,5 @@
 import UserModel from "../models/user.model.js";
+import JobSeekerModel from "../models/jobseeker.model.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
@@ -95,6 +96,16 @@ export const getUserById = async (req, res) => {
   try {
     const user = await UserModel.findById(id);
     res.json(user);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getJobseekerByUserId = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const jobseeker = await JobSeekerModel.findOne({ userid: id });
+    res.json(jobseeker);
   } catch (error) {
     console.log(error);
   }
