@@ -21,7 +21,7 @@ const Job = mongoose.Schema({
   },
   date: {
     type: Date,
-    default: new Date().getTime(),
+    default: new Date().toUTCString(),
   },
   benefits: {
     type: String,
