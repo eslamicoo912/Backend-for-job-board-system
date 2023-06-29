@@ -13,6 +13,12 @@ const JobSeeker = mongoose.Schema({
     type: String,
     required: true,
   },
+  email: {
+    type: String,
+  },
+  portfolio_link: {
+    type: String,
+  },
   specialization: {
     type: String,
     required: true,
